@@ -1,0 +1,21 @@
+# Fichiers de compilation
+*.pyc
+*.pyo
+*.pyd
+
+# Répertoires de fichiers temporaires
+__pycache__/
+
+# Fichiers de données volumineux
+*.csv
+*.json
+*.pkl
+
+# Fichiers de configuration sensibles
+config.ini
+
+# Répertoires de dépendances ou de fichiers générés
+venv/
+node_modules/
+dist/
+build/
