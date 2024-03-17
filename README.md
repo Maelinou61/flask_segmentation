@@ -1,4 +1,5 @@
 Flask App for U-Net Segmentation Model with TensorFlow Lite
+
 Overview
 This Flask application serves as an interface for utilizing a U-Net segmentation model stored in TensorFlow Lite (TFLite) format. The U-Net model is capable of segmenting images, particularly useful for various computer vision tasks, including medical image analysis, semantic segmentation, and more.
 
