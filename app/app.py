@@ -5,7 +5,7 @@ import cv2
 
 app = Flask(__name__)
 
-# Charger le modèle TensorFlow Lite
+# Charge le modèle TensorFlow Lite
 interpreter = tf.lite.Interpreter(model_path="app/weights.tflite")
 interpreter.allocate_tensors()
 
@@ -21,17 +21,17 @@ def predict():
 
     preprocessed_image = preprocess_image(image).astype(np.float32)
 
-    # Préparer les tenseurs d'entrée et de sortie
+    # Prépare les tenseurs d'entrée et de sortie
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
 
-    # Injecter les données d'entrée dans le modèle TensorFlow Lite
+    # Injecte les données d'entrée dans le modèle TensorFlow Lite
     interpreter.set_tensor(input_details[0]['index'], np.expand_dims(preprocessed_image, axis=0))
 
-    # Effectuer l'inférence
+    # Effectue l'inférence
     interpreter.invoke()
 
-    # Récupérer les résultats de l'inférence
+    # Récupère les résultats de l'inférence
     prediction = interpreter.get_tensor(output_details[0]['index'])
     prediction = postprocess_prediction(prediction)
     
@@ -41,11 +41,9 @@ def predict():
     return jsonify(response)
 
 def preprocess_image(image):
-    # Ajouter tout prétraitement nécessaire ici
     return image
 
 def postprocess_prediction(prediction):
-    # Ajouter tout post-traitement nécessaire ici
     prediction = 1 * (prediction > 0.5)
     return prediction.squeeze()
 
